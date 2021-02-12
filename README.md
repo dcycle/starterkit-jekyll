@@ -21,6 +21,7 @@ January 20, 2021, Dcycle Blog](https://blog.dcycle.com/blog/2021-01-20/ci/).
 Here are some of the things we test for:
 
 * CSS structure
+* JavaScript structure
 * HTML structure
 * Broken links
 * Javascript interaction
