@@ -9,11 +9,13 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-echo ""
-echo "*** Checking file $1 ***"
-echo ""
-docker run --rm -v "$(pwd)":/code dcycle/html-validate:1 --drop-empty-elements no "$1"
+FILE="$1"
 
 echo ""
-echo "*** Done checking file $1 ***"
+echo "*** Validating HTML on file $FILE ***"
 echo ""
+docker run --rm -v "$(pwd)":/code dcycle/html-validate:1 --drop-empty-elements no "$FILE"
+#
+# echo ""
+# echo "*** Done validating HTML on file $1 ***"
+# echo ""
