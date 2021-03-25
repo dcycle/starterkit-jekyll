@@ -46,7 +46,13 @@ HTML websites are just old school files written in HTML, CSS and Javascript.
 
 Jekyll websites can have extra information which is used to "build" the HTML websites.
 
-This project contains an example HTML file at ./docs/index.html and an example Jekyll file at ./docs/jekyll-simple.html
+This project contains an example HTML file at ./docs/index.html and an example Jekyll file at ./docs/jekyll/jekyll-simple.html
+
+To see Jekyll in action, fork this project and enable GitHub pages on your project; or else install Docker, then run
+
+    ./scripts/deploy.sh
+
+And visit http://0.0.0.0:8082/jekyll/jekyll-simple.html.
 
 Resources
 -----

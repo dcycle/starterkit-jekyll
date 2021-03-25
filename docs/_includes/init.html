@@ -1,0 +1,10 @@
+{% assign myconfig = site.data.config.items[0] %}
+{% for config in site.data.config.items %}
+  {% if config.lang == page.lang %}
+    {% assign myconfig = config %}
+  {% endif %}
+{% endfor %}
+{% assign mylangs = myconfig.langs %}
+{% if page.langs %}
+  {% assign mylangs = page.langs %}
+{% endif %}

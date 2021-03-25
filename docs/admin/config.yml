@@ -1,0 +1,145 @@
+locale: 'en'
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
+backend:
+  # See https://www.netlifycms.org/docs/authentication-backends/#github-backend
+  name: github
+  repo: dcycle/starterkit-jekyll
+  branch: master
+  base_url: https://auth.static.dcycle.com
+  auth_endpoint: auth/github/alberto56
+media_folder: 'docs/media'
+public_folder: "/media"
+collections:
+  - name: "config"
+    label: "General configuration"
+    editor:
+      preview: false
+    files:
+      - label: "Configuration générale"
+        name: "config"
+        create: false
+        file: "docs/_data/config.yml"
+        fields:
+          - label: "Configuration"
+            name: "items"
+            widget: "list"
+            fields:
+              - label: "URL de base, par exemple https://www.toutnaturelcaraibes.org"
+                name: "baseurl"
+                widget: "string"
+              - label: "Montrer la section 'Menaces par rapport aux changements climatiques' sur les fiches"
+                name: "montrer_menaces"
+                widget: "boolean"
+              - label: "Médias sociaux"
+                name: "social"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "nom (par exemple facebook, twitter)", name: name, widget: string, required: false}
+                  - {label: "url complet commençant par http://...", name: url, widget: string, required: false}
+              - label: "Nombre d'items dans une liste partielle, par exemple la page destination. Par exemple 5."
+                name: "items_liste_partielle"
+                widget: "number"
+  - name: 'pages'
+    create: true
+    label: 'Pages'
+    folder: 'docs/pages/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Mise en page, le plus souvent "post", mais peut aussi être "destinations"', name: 'layout', widget: 'string', default: 'post' }
+      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
+        name: order
+        widget: number
+        value_type: float
+        required: false
+      - { label: 'Titre (par exemple "Destinations")', name: 'title', widget: 'string' }
+      - { label: 'Chemin SANS accents, SANS majuscules, avec une barre oblique avant et après (par exemple /actualites-ecologiques/)', name: 'permalink', widget: 'string' }
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
+  - name: 'partenaires'
+    create: true
+    label: 'partenaires'
+    folder: 'docs/partenaires/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
+        name: order
+        widget: number
+        value_type: float
+        required: false
+      - { label: 'Titre (par exemple "Maison verte Haïti")', name: 'title', widget: 'string' }
+      - label: "Image"
+        name: "img"
+        widget: "image"
+        required: false
+  - name: "destinations"
+    create: true
+    label: "Destinations"
+    folder: 'docs/destinations/_posts'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: "Destination (par exemple Haïti ou Sainte-Lucie)"
+        name: nom
+        widget: string
+        required: true
+      - { label: 'layout', name: 'layout', widget: 'hidden', default: 'destination' }
+      - { label: 'Chemin SANS accents, SANS majuscules, avec une barre oblique avant et après (par exemple /haiti/ ou /sainte-lucie/)', name: 'permalink', widget: 'string' }
+      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
+        name: order
+        widget: number
+        value_type: float
+        required: false
+  - name: "fiches"
+    create: true
+    label: "Fiches"
+    folder: 'docs/fiches/_posts'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'fiche' }
+      - { label: 'Chemin SANS accents, SANS majuscules, avec une barre oblique avant et après (par exemple /haiti/etang-miragoane/)', name: 'permalink', widget: 'string' }
+      - label: "Nom du lieu"
+        name: nom
+        widget: string
+        required: true
+      - label: "Destination (par exemple Haïti ou Sainte-Lucie)"
+        name: destination
+        widget: string
+        required: false
+      - label: "Sous-titre"
+        name: soustitre
+        widget: string
+        required: false
+      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
+        name: order
+        widget: number
+        value_type: float
+        required: false
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "image", name: img, widget: image, required: false}
+          - {label: "décrivez cette image pour les personnes non-voyantes", name: alt, widget: string, required: false}
+      - label: "Géolocalisation (itinéraire GPS)"
+        name: geolocalisation
+        widget: string
+        required: false
+      - label: "Description"
+        name: description
+        widget: text
+        required: false
+      - label: "Sa biodiversité (son écosystème)"
+        name: biodiversite
+        widget: text
+        required: false
+      - label: "Ses potentialités écotouristiques"
+        name: potentialites
+        widget: text
+        required: false
+      - label: "Ses menaces par rapport aux changements climatiques et les mesures à prendre pour s’adapter aux aléas naturels"
+        name: menaces
+        widget: text
+        required: false
