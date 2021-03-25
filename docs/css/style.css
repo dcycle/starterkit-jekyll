@@ -1,7 +1,3 @@
----
----
-{% assign colors = site.data.config.color_palette %}
-
 body {
   padding-top: 56px;
   background: #99ffcc;
@@ -13,15 +9,10 @@ body {
   display: none;
 }
 
-a.navbar-brand {
+.navbar-brand {
   font-weight: 800;
 }
 
 .lang-nav-link {
   text-transform: uppercase;
-}
-
-.bg-dark {
-  color: {{ colors.dark_bg_fore }};
-  background: {{ colors.dark_bg_back }};
 }
