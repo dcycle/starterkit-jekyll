@@ -44,6 +44,7 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - label: 'Layout'
+        name: 'layout'
         widget: select
         options:
           - { label: "Page", value: "Basic page" }
@@ -56,9 +57,7 @@ collections:
         name: "img"
         widget: "list"
         required: false
-        fields:
-          - {label: "Image", name: img, widget: image, required: false}
-          - {label: "Describe the image for the visually impaired", name: alt, widget: string}
+        field: {label: Image, name: image, widget: image}
       - { label: 'Content', name: 'body', widget: 'markdown' }
   - name: 'events'
     create: true
@@ -76,9 +75,7 @@ collections:
         name: "img"
         widget: "list"
         required: false
-        fields:
-          - {label: "Image", name: img, widget: image, required: false}
-          - {label: "Describe the image for the visually impaired", name: alt, widget: string}
+        field: {label: Image, name: image, widget: image}
       - { label: 'Content', name: 'body', widget: 'markdown' }
   - name: 'blog'
     create: true
@@ -87,7 +84,7 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Author', name: 'author', widget: 'string', required: 'false' }
+      - { label: 'Author', name: 'author', widget: 'string', required: false }
       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
       - { label: 'Path (for example /blog/my-blog-post/)', name: 'permalink', widget: 'string' }
       - label: "Redirect From (for example /blog/my-blog-post/ ,/yet-another-path/)"
@@ -97,7 +94,5 @@ collections:
         name: "img"
         widget: "list"
         required: false
-        fields:
-          - {label: "Image", name: img, widget: image, required: false}
-          - {label: "Describe the image for the visually impaired", name: alt, widget: string}
+        field: {label: Image, name: image, widget: image}
       - { label: 'Content', name: 'body', widget: 'markdown' }
