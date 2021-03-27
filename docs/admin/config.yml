@@ -96,3 +96,12 @@ collections:
         required: false
         field: {label: Image, name: image, widget: image}
       - { label: 'Content', name: 'body', widget: 'markdown' }
+  - name: 'imageinfo'
+    create: true
+    label: 'Image Information'
+    folder: 'docs/jekyll_imageinfo/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Describe the image for the visually impaird (alt text)', name: 'alt', widget: 'string' }
+      - { label: 'Source and copyright information about the image', name: 'source', widget: 'string' }
