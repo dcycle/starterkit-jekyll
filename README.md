@@ -102,6 +102,7 @@ Alert banner
 Popup banner
 Comments
 Photo gallery
+Not found page (https://jekyllrb.com/tutorials/custom-404-page/)
 
 Resources
 -----

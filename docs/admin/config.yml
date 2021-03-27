@@ -1,5 +1,6 @@
 ---
 ---
+{% assign slug = "{{year}}-{{month}}-{{day}}-{{slug}}" %}
 locale: 'en'
 slug:
   encoding: "ascii"
@@ -33,42 +34,70 @@ collections:
                 name: "menu"
                 widget: "list"
                 fields:
-                  - { label: 'id, for example home or blog', name: 'id', widget: 'string', required: false }
                   - { label: 'label, for example "Home" or "Blog"', name: 'label', widget: 'string' }
                   - { label: 'href, for example /blog/ or https://duckduckgo.com', name: 'href', widget: 'string' }
   - name: 'pages'
     create: true
     label: 'Pages'
     folder: 'docs/jekyll_pages/_posts/'
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - label: 'Layout'
+        widget: select
+        options:
+          - { label: "Page", value: "Basic page" }
+          - { label: "Blog list", value: "List of blog posts" }
       - { label: 'Path (for example /privacy-policy/)', name: 'permalink', widget: 'string' }
       - label: "Redirect From (for example /some-other-path/ ,/yet-another-path/)"
         name: "redirect_from"
         widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Image", name: img, widget: image, required: false}
+          - {label: "Describe the image for the visually impaired", name: alt, widget: string}
       - { label: 'Content', name: 'body', widget: 'markdown' }
   - name: 'events'
     create: true
     label: 'Events'
     folder: 'docs/jekyll_events/_posts/'
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'event' }
       - { label: 'Path (for example /events/new-years-eve/)', name: 'permalink', widget: 'string' }
       - label: "Redirect From (for example /new-year/ ,/yet-another-path/)"
         name: "redirect_from"
         widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Image", name: img, widget: image, required: false}
+          - {label: "Describe the image for the visually impaired", name: alt, widget: string}
       - { label: 'Content', name: 'body', widget: 'markdown' }
   - name: 'blog'
     create: true
     label: 'Blog posts'
     folder: 'docs/jekyll_blogposts/_posts/'
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Author', name: 'author', widget: 'string', required: 'false' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
       - { label: 'Path (for example /blog/my-blog-post/)', name: 'permalink', widget: 'string' }
       - label: "Redirect From (for example /blog/my-blog-post/ ,/yet-another-path/)"
         name: "redirect_from"
         widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Image", name: img, widget: image, required: false}
+          - {label: "Describe the image for the visually impaired", name: alt, widget: string}
       - { label: 'Content', name: 'body', widget: 'markdown' }
