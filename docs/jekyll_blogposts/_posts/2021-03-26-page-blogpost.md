@@ -5,6 +5,9 @@ author: John Smith
 layout: blog
 redirect_from:
   - /my-blog-post/
+img:
+  - /media/jon-tyson-q5qhots2tfi-unsplash.jpg
+  - /media/toa-heftiba-cz7nbp8yemy-unsplash.jpg
 ---
 When courage is needed, you’re never around. Those medals you wear on your moth-eaten chest should be there for bungling at which you are best. So, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon. Howwww! Nab him, jab him, tab him, grab him, stop that pigeon now.
 
