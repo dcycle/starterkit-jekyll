@@ -1,3 +1,5 @@
+---
+---
 locale: 'en'
 slug:
   encoding: "ascii"
@@ -18,7 +20,7 @@ collections:
     editor:
       preview: false
     files:
-      - label: "Configuration générale"
+      - label: "General configuration"
         name: "config"
         create: false
         file: "docs/_data/config.yml"
@@ -27,119 +29,46 @@ collections:
             name: "items"
             widget: "list"
             fields:
-              - label: "URL de base, par exemple https://www.toutnaturelcaraibes.org"
-                name: "baseurl"
-                widget: "string"
-              - label: "Montrer la section 'Menaces par rapport aux changements climatiques' sur les fiches"
-                name: "montrer_menaces"
-                widget: "boolean"
-              - label: "Médias sociaux"
-                name: "social"
+              - label: "Menu items"
+                name: "menu"
                 widget: "list"
-                required: false
                 fields:
-                  - {label: "nom (par exemple facebook, twitter)", name: name, widget: string, required: false}
-                  - {label: "url complet commençant par http://...", name: url, widget: string, required: false}
-              - label: "Nombre d'items dans une liste partielle, par exemple la page destination. Par exemple 5."
-                name: "items_liste_partielle"
-                widget: "number"
+                  - { label: 'id, for example home or blog', name: 'id', widget: 'string', required: false }
+                  - { label: 'label, for example "Home" or "Blog"', name: 'label', widget: 'string' }
+                  - { label: 'href, for example /blog/ or https://duckduckgo.com', name: 'href', widget: 'string' }
   - name: 'pages'
     create: true
     label: 'Pages'
-    folder: 'docs/pages/_posts/'
+    folder: 'docs/jekyll_pages/_posts/'
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
-      - { label: 'Mise en page, le plus souvent "post", mais peut aussi être "destinations"', name: 'layout', widget: 'string', default: 'post' }
-      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
-        name: order
-        widget: number
-        value_type: float
-        required: false
-      - { label: 'Titre (par exemple "Destinations")', name: 'title', widget: 'string' }
-      - { label: 'Chemin SANS accents, SANS majuscules, avec une barre oblique avant et après (par exemple /actualites-ecologiques/)', name: 'permalink', widget: 'string' }
-      - { label: 'Contenu', name: 'body', widget: 'markdown' }
-  - name: 'partenaires'
-    create: true
-    label: 'partenaires'
-    folder: 'docs/partenaires/_posts/'
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    fields:
-      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
-        name: order
-        widget: number
-        value_type: float
-        required: false
-      - { label: 'Titre (par exemple "Maison verte Haïti")', name: 'title', widget: 'string' }
-      - label: "Image"
-        name: "img"
-        widget: "image"
-        required: false
-  - name: "destinations"
-    create: true
-    label: "Destinations"
-    folder: 'docs/destinations/_posts'
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    fields:
-      - label: "Destination (par exemple Haïti ou Sainte-Lucie)"
-        name: nom
-        widget: string
-        required: true
-      - { label: 'layout', name: 'layout', widget: 'hidden', default: 'destination' }
-      - { label: 'Chemin SANS accents, SANS majuscules, avec une barre oblique avant et après (par exemple /haiti/ ou /sainte-lucie/)', name: 'permalink', widget: 'string' }
-      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
-        name: order
-        widget: number
-        value_type: float
-        required: false
-  - name: "fiches"
-    create: true
-    label: "Fiches"
-    folder: 'docs/fiches/_posts'
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    fields:
-      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'fiche' }
-      - { label: 'Chemin SANS accents, SANS majuscules, avec une barre oblique avant et après (par exemple /haiti/etang-miragoane/)', name: 'permalink', widget: 'string' }
-      - label: "Nom du lieu"
-        name: nom
-        widget: string
-        required: true
-      - label: "Destination (par exemple Haïti ou Sainte-Lucie)"
-        name: destination
-        widget: string
-        required: false
-      - label: "Sous-titre"
-        name: soustitre
-        widget: string
-        required: false
-      - label: "Ordre dans la liste (-5 vient avant 1 vient avant 5 vient avant 5.2, par exemple)"
-        name: order
-        widget: number
-        value_type: float
-        required: false
-      - label: "Images"
-        name: "img"
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Path (for example /privacy-policy/)', name: 'permalink', widget: 'string' }
+      - label: "Redirect From (for example /some-other-path/ ,/yet-another-path/)"
+        name: "redirect_from"
         widget: "list"
-        required: false
-        fields:
-          - {label: "image", name: img, widget: image, required: false}
-          - {label: "décrivez cette image pour les personnes non-voyantes", name: alt, widget: string, required: false}
-      - label: "Géolocalisation (itinéraire GPS)"
-        name: geolocalisation
-        widget: string
-        required: false
-      - label: "Description"
-        name: description
-        widget: text
-        required: false
-      - label: "Sa biodiversité (son écosystème)"
-        name: biodiversite
-        widget: text
-        required: false
-      - label: "Ses potentialités écotouristiques"
-        name: potentialites
-        widget: text
-        required: false
-      - label: "Ses menaces par rapport aux changements climatiques et les mesures à prendre pour s’adapter aux aléas naturels"
-        name: menaces
-        widget: text
-        required: false
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+  - name: 'events'
+    create: true
+    label: 'Events'
+    folder: 'docs/jekyll_events/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Path (for example /events/new-years-eve/)', name: 'permalink', widget: 'string' }
+      - label: "Redirect From (for example /new-year/ ,/yet-another-path/)"
+        name: "redirect_from"
+        widget: "list"
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+  - name: 'blog'
+    create: true
+    label: 'Blog posts'
+    folder: 'docs/jekyll_blogposts/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Path (for example /blog/my-blog-post/)', name: 'permalink', widget: 'string' }
+      - label: "Redirect From (for example /blog/my-blog-post/ ,/yet-another-path/)"
+        name: "redirect_from"
+        widget: "list"
+      - { label: 'Content', name: 'body', widget: 'markdown' }

@@ -2,10 +2,10 @@ items:
   - menu:
     - id: home
       label: Home
-      href: '#'
-    - id: about
-      label: About
-      href: '#'
+      href: '/jekyll-feature-rich.html'
+    - id: blog
+      label: Blog
+      href: '/jekyll/blog/'
     - id: services
       label: Services
       href: '#'
