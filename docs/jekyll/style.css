@@ -1,0 +1,27 @@
+---
+---
+{% assign colors = site.data.config.color_palette %}
+
+body {
+  padding-top: 56px;
+  background: #99ffcc;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.show-on-click {
+  display: none;
+}
+
+.navbar-brand {
+  font-weight: 800;
+}
+
+.lang-nav-link {
+  text-transform: uppercase;
+}
+
+.bg-dark {
+  color: {{ colors.dark_bg_fore }};
+  background: {{ colors.dark_bg_back }};
+}
