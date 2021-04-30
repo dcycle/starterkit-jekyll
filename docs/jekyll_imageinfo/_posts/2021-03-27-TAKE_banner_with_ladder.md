@@ -1,6 +1,8 @@
 ---
 title: TAKE banner with ladder
-image: /media/jon-tyson-Q5qHoTs2tFI-unsplash.jpg
+layout: imageinfo
+image: /media/jon-tyson-q5qhots2tfi-unsplash.jpg
+caption: Large banner.
 alt: Large red banner marked TAKE, with ladder in front of it
-source: Jon Tyson @jontyson, https://unsplash.com/photos/Q5qHoTs2tFI, https://unsplash.com/license
+source: "Jon Tyson @jontyson, https://unsplash.com/photos/Q5qHoTs2tFI, https://unsplash.com/license"
 ---

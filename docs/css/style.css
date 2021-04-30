@@ -6,3 +6,39 @@ body {
 .show-on-click {
   display: none;
 }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.image-gallery-wrapper img {
+  float: left;
+  height: 200px;
+  padding-right: 10px;
+}
+
+.blog-excerpt img {
+  float: left;
+  height: 150px;
+  padding-right: 10px;
+}
+
+.page-content {
+  padding-bottom: 35px;
+}
+
+.hidden {
+  display: none;
+}
+
+.all-tags.some-selected li.tag a {
+  text-decoration: line-through;
+}
+
+.all-tags.some-selected li.tag a.selected,
+.tag-selector.selected {
+  text-decoration: none;
+  font-weight: bold;
+}

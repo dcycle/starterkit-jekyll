@@ -5,6 +5,9 @@ author: John Smith
 layout: blog
 redirect_from:
   - /my-blog-post/
+tags:
+  - programming
+  - web design
 img:
   - /media/jon-tyson-q5qhots2tfi-unsplash.jpg
   - /media/toa-heftiba-cz7nbp8yemy-unsplash.jpg

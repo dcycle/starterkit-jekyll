@@ -1,6 +1,8 @@
 ---
 title: Bridge in city
-image: /media/toa-heftiba-GDGf6sUJ6H4-unsplash.jpg
+layout: imageinfo
+caption: Bridge going through the city.
+image: /media/toa-heftiba-gdgf6suj6h4-unsplash.jpg
 alt: Bridge going through city
-source: Toa Heftiba, https://unsplash.com/photos/GDGf6sUJ6H4, https://unsplash.com/license
+source: "Toa Heftiba, https://unsplash.com/photos/GDGf6sUJ6H4, https://unsplash.com/license"
 ---

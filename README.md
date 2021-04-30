@@ -89,20 +89,24 @@ Then visit http://0.0.0.0:8082/jekyll-feature-rich.html.
 Here are some of the cool features of this Jekyll site:
 
 * Content types with their own fields; these are defined in `./docs/jekyll_blogposts/_posts/*`, `./jekyll_events/_posts/*`, `./jekyll_pages/_posts/*`.
-Blog posts
-Limited Wysiwyg capabilities
-Image, file, PDF library
-Events
-Multilingual
-Our Team section
-Our Clients section
-Contact Us and form
-Interactive map
-Alert banner
-Popup banner
-Comments
-Photo gallery
-Not found page (https://jekyllrb.com/tutorials/custom-404-page/)
+* Blog posts
+
+To come:
+
+* Blog posts categorized by tag
+* Limited Wysiwyg capabilities
+* Image, file, PDF library
+* Events
+* Multilingual
+* Our Team section
+* Our Clients section
+* Contact Us and form
+* Interactive map
+* Alert banner
+* Popup banner
+* Comments
+* Photo gallery
+* Not found page (https://jekyllrb.com/tutorials/custom-404-page/)
 
 Resources
 -----
