@@ -16,7 +16,7 @@
       {% assign image = post.img | first %}
       {% include image.html %}
     {% endif %}
-    <p>{{ post.excerpt }}</p>
+    <p class="blog-post-excerpt">{{ post.excerpt | strip_html }}</p>
     </div>
   </div>
 {% endfor %}

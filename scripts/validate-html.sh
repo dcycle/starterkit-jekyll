@@ -16,3 +16,6 @@ for root in ./docs/_site ./do-not-commit/dom-captures; do
     ./scripts/validate-html-file.sh "$i"
   done
 done
+echo ""
+echo "Done validating HTML!"
+echo ""
