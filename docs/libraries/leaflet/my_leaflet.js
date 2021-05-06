@@ -12,14 +12,16 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
 var markers = [];
+var singlemarkers = L.markerClusterGroup();
 {% for location in locations %}
   {% if location.latlon.size == 0%}
     {% comment %}
       No latitude longitude, moving on.
     {% endcomment %}
   {% elsif location.latlon.size == 1%}
-    var marker = L.marker([{{ location.latlon[0].lat }}, {{ location.latlon[0].lon }}]).addTo(mymap);
+    var marker = L.marker([{{ location.latlon[0].lat }}, {{ location.latlon[0].lon }}]);
     markers.push(marker);
+    singlemarkers.addLayer(marker);
   {% else %}
     var mypolygon = [];
     {% for latlon in location.latlon %}
@@ -32,5 +34,7 @@ var markers = [];
 {% endfor %}
 
 var group = new L.featureGroup(markers);
+
+mymap.addLayer(singlemarkers);
 
 mymap.fitBounds(group.getBounds());

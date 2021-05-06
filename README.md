@@ -121,6 +121,7 @@ Resources
 * https://github.com/BlackrockDigital/startbootstrap
 * https://vole.wtf/text-generator/
 * https://leafletjs.com/examples/quick-start/
+* https://github.com/Leaflet/Leaflet.markercluster#using-the-plugin
 
 Images
 -----
