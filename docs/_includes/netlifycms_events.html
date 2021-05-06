@@ -1,0 +1,18 @@
+  - name: 'events'
+    create: true
+    label: 'Events'
+    folder: 'docs/jekyll_events/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'event' }
+      - { label: 'Path (for example /events/new-years-eve/)', name: 'permalink', widget: 'string' }
+      - label: "Redirect From (for example /new-year/ ,/yet-another-path/)"
+        name: "redirect_from"
+        widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        field: {label: Image, name: image, widget: image}
+      - { label: 'Content', name: 'body', widget: 'markdown' }

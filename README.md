@@ -96,6 +96,7 @@ Here are some of the cool features of this Jekyll site:
 
 * Content types with their own fields; these are defined in `./docs/jekyll_blogposts/_posts/*`, `./jekyll_events/_posts/*`, `./jekyll_pages/_posts/*`.
 * Blog posts
+* Locations on a map. See ./docs/jekyll_locations/_posts. These can be simple lat/lon coordinates, or a complex Polygon. In our example we used data from https://github.com/datasets/geo-countries to get the polygon for the country of Lybia (careful, the lat lon are inversed)
 
 To come:
 
@@ -119,6 +120,7 @@ Resources
 
 * https://github.com/BlackrockDigital/startbootstrap
 * https://vole.wtf/text-generator/
+* https://leafletjs.com/examples/quick-start/
 
 Images
 -----
