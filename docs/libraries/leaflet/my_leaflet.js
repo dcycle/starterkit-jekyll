@@ -56,7 +56,7 @@ var myMap = {
     while (latlon = latlons.shift()) {
       if (latlon.new == true) {
         polygons.push(mypolygon)
-        return addPolygonGroupRecursive(latlons, polygons);
+        return this.addPolygonGroupRecursive(latlons, polygons);
       }
       var marker = L.marker([latlon.lat, latlon.lon]);
       mypolygon.push([latlon.lat, latlon.lon]);
