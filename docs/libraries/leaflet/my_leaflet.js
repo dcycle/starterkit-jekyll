@@ -52,10 +52,12 @@ var myMap = {
   addPolygonGroupRecursive(latlons, polygons = []) {
     var mypolygon = [];
 
-    var i;
     var latlon;
-    for (i = 0; i < latlons.length; i++) {
-      latlon = latlons[i];
+    while (latlon = latlons.shift()) {
+      if (latlon.new == true) {
+        polygons.push(mypolygon)
+        return addPolygonGroupRecursive(latlons, polygons);
+      }
       var marker = L.marker([latlon.lat, latlon.lon]);
       mypolygon.push([latlon.lat, latlon.lon]);
       this.markers.push(marker);
