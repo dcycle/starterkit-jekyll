@@ -96,7 +96,8 @@ Here are some of the cool features of this Jekyll site:
 
 * Content types with their own fields; these are defined in `./docs/jekyll_blogposts/_posts/*`, `./jekyll_events/_posts/*`, `./jekyll_pages/_posts/*`.
 * Blog posts
-* Locations on a map. See ./docs/jekyll_locations/_posts. These can be simple lat/lon coordinates, or a complex Polygon. In our example we used data from https://github.com/datasets/geo-countries to get the polygon for the country of Haiti (careful, the lat lon are inversed). To see this in action, visit /jekyll/locations/.
+* Locations on a map. See ./docs/jekyll_locations/_posts. These can be simple lat/lon coordinates, or a complex Polygon. In our example we used data from https://github.com/datasets/geo-countries to get the polygon for the country of Haiti (careful, the lat lon are inversed). To see this in action, visit /jekyll/locations/
+* Discontiguous locations: locations can be a discontiguous polygon. For example, Alaska, mainland USA and other territories constitute a single country. Haiti is one such example; please look at the example of how this is supported herein.
 
 To come:
 
