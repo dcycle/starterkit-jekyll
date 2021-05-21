@@ -21,22 +21,48 @@ var myMap = {
       this.addSingleMarker(location.latlon[0]);
     }
     else {
-      // this.addPolygon(location.latlon);
+      this.addPolygonGroup(location.latlon);
     }
   },
-  addPolygon: function(latlons) {
+  /**
+   * Add a polygon which might be discontiguous (such as USA and Alaska).
+   *
+   * @param latlons array of objects, which each have lat, lon, and can have
+   *   new (meaning we are starting a discontiguous area).
+   */
+  addPolygonGroup: function(latlons) {
+    var mypolygons = this.addPolygonGroupRecursive(latlons);
+
+    var i;
+    var polygon;
+    for (i = 0; i < mypolygons.length; i++) {
+      polygon = mypolygons[i];
+      L.polygon(polygon).addTo(this.mymap);
+    }
+  },
+  /**
+   * Add a polygon which might be discontiguous (such as USA and Alaska).
+   *
+   * @param latlons array of objects, which each have lat, lon, and can have
+   *   new (meaning we are starting a discontiguous area).
+   * @param polygons array of existing polygons to add a polygon.
+   *
+   * @return array of polygons.
+   */
+  addPolygonGroupRecursive(latlons, polygons = []) {
     var mypolygon = [];
 
     var i;
     var latlon;
     for (i = 0; i < latlons.length; i++) {
       latlon = latlons[i];
-      var marker = L.marker([{{ latlon.lat }}, {{ latlon.lon }}]);
-      mypolygon.push([{{ latlon.lat }}, {{ latlon.lon }}]);
+      var marker = L.marker([latlon.lat, latlon.lon]);
+      mypolygon.push([latlon.lat, latlon.lon]);
       this.markers.push(marker);
     }
 
-    var polygon = L.polygon(mypolygon).addTo(this.mymap);
+    polygons.push(mypolygon);
+    return polygons;
   },
   /**
    * Add a marker.
@@ -48,7 +74,7 @@ var myMap = {
    */
   addSingleMarker: function(latlon) {
     // This location is a single latitude and longitude, so create a marker.
-    var marker = L.marker([{{ latlon.lat }}, {{ latlon.lon }}]);
+    var marker = L.marker([latlon.lat, latlon.lon]);
     this.markers.push(marker);
     this.singlemarkers.addLayer(marker);
   },
