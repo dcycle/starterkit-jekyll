@@ -1,40 +1,87 @@
 ---
 ---
 {% include init.html %}
-var mymap = L.map('mapid');
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={{ keys.mapbox }}', {
-  maxZoom: 18,
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  id: 'mapbox/streets-v11',
-  tileSize: 512,
-  zoomOffset: -1
-}).addTo(mymap);
 
-var markers = [];
-var singlemarkers = L.markerClusterGroup();
-{% for location in locations %}
-  {% if location.latlon.size == 0%}
-    {% comment %}
-      No latitude longitude, moving on.
-    {% endcomment %}
-  {% elsif location.latlon.size == 1%}
-    var marker = L.marker([{{ location.latlon[0].lat }}, {{ location.latlon[0].lon }}]);
-    markers.push(marker);
-    singlemarkers.addLayer(marker);
-  {% else %}
+var myMap = {
+  /**
+   * Add a location.
+   *
+   * @param location a location which must contain a latlon property which
+   *   itself is a collection of objects, each having lat and lon, and
+   *   potentially "new" which can be bool. This is the case for polygons
+   *   with discontiguous areas such as Alaska is to the United States.
+   */
+  addLocation: function(location) {
+    if (location.latlon.length <= 0) {
+      // No location to show, moving on.
+    }
+    else if (location.latlon.length == 1) {
+      // This location is a single latitude and longitude on the map, show a
+      // marker.
+      this.addSingleMarker(location.latlon[0]);
+    }
+    else {
+      this.addPolygon(location.latlon);
+    }
+  },
+  addPolygon: function(latlons) {
     var mypolygon = [];
-    {% for latlon in location.latlon %}
+
+    var i;
+    var latlon;
+    for (i = 0; i < latlons.length; i++) {
+      latlon = latlons[i];
       var marker = L.marker([{{ latlon.lat }}, {{ latlon.lon }}]);
       mypolygon.push([{{ latlon.lat }}, {{ latlon.lon }}]);
-      markers.push(marker);
-    {% endfor %}
+      this.markers.push(marker);
+    }
+
     var polygon = L.polygon(mypolygon).addTo(mymap);
-  {% endif %}
+  },
+  /**
+   * Add a marker.
+   *
+   * @param location a location which must contain a latlon property which
+   *   itself is a collection of objects, each having lat and lon, and
+   *   potentially "new" which can be bool. This is the case for polygons
+   *   with discontiguous areas such as Alaska is to the United States.
+   */
+  addSingleMarker: function(latlon) {
+    // This location is a single latitude and longitude, so create a marker.
+    var marker = L.marker([{{ latlon.lat }}, {{ latlon.lon }}]);
+    this.markers.push(marker);
+    this.singlemarkers.addLayer(marker);
+  },
+  /**
+   * Display the map.
+   */
+  display: function() {
+    var group = new L.featureGroup(markers);
+    this.mymap.addLayer(this.singlemarkers);
+    this.mymap.fitBounds(group.getBounds());
+  },
+  /**
+   * Initialize some parameters.
+   */
+  init: function() {
+    this.mymap = L.map('mapid');
+    this.L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={{ keys.mapbox }}', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1
+    }).addTo(this.mymap);
+    this.markers = [];
+    this.singlemarkers = L.markerClusterGroup();
+  }
+};
+
+myMap.init();
+
+{% for location in locations %}
+  myMap.addLocation({{ location | jsonify }});
 {% endfor %}
 
-var group = new L.featureGroup(markers);
-
-mymap.addLayer(singlemarkers);
-
-mymap.fitBounds(group.getBounds());
+myMap.display();
