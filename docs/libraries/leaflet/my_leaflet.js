@@ -56,12 +56,7 @@ var myMap = {
    * Display the map.
    */
   display: function() {
-    console.log('AA');
-    console.log(this.markers);
     var group = new L.featureGroup(this.markers);
-    console.log('ZZ1');
-    console.log(group.getBounds());
-    console.log('ZZ2');
     this.mymap.addLayer(this.singlemarkers);
     this.mymap.fitBounds(group.getBounds());
   },
