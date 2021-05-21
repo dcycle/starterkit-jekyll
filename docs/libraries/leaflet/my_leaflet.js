@@ -21,7 +21,7 @@ var myMap = {
       this.addSingleMarker(location.latlon[0]);
     }
     else {
-      this.addPolygon(location.latlon);
+      // this.addPolygon(location.latlon);
     }
   },
   addPolygon: function(latlons) {
@@ -36,7 +36,7 @@ var myMap = {
       this.markers.push(marker);
     }
 
-    var polygon = L.polygon(mypolygon).addTo(mymap);
+    var polygon = L.polygon(mypolygon).addTo(this.mymap);
   },
   /**
    * Add a marker.
@@ -56,7 +56,12 @@ var myMap = {
    * Display the map.
    */
   display: function() {
-    var group = new L.featureGroup(markers);
+    console.log('AA');
+    console.log(this.markers);
+    var group = new L.featureGroup(this.markers);
+    console.log('ZZ1');
+    console.log(group.getBounds());
+    console.log('ZZ2');
     this.mymap.addLayer(this.singlemarkers);
     this.mymap.fitBounds(group.getBounds());
   },
@@ -65,7 +70,7 @@ var myMap = {
    */
   init: function() {
     this.mymap = L.map('mapid');
-    this.L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={{ keys.mapbox }}', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={{ keys.mapbox }}', {
       maxZoom: 18,
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
