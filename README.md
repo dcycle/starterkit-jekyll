@@ -68,6 +68,18 @@ These stacks can be put into two broad categories:
 * **Server-heavy websites** such as LAMP stack sites (Drupal, Wordpress, Joomla) or MERN stack sites. This is a good solution if you are developing a web-based community with multiple users such as forum or the next Reddit, a dating site, or other project with user-supplied content.
 * **Static Site Generators**. Jekyll fits into this category; and these can be a good fit for sites which have little or no user-supplied content. (All user-supplied content such as comments and contact form submissions need to go through a third-party service such as Disqus for comments or Formspree for forms.)
 
+Getting started with Jekyll
+-----
+
+    git remote add origin https://github.com/dcycle/starterkit-jekyll.git
+    git remote add origin git@github.com:YOUR/GIT_REPO.git
+
+Then modify ./config/versioned
+
+In ./docs/admin/config.yml change backend repo
+
+In ./docs/_data/config.yml put your own API tokens
+
 NetlifyCMS, the CMS for static sites
 -----
 
