@@ -38,7 +38,7 @@ let MyEvents = {
   error: function(thrownError) {
     this.deleteVisibleArea();
     this.addToVisibleArea('template-error-loading-events');
-    $('.events-error').html(thrownError);;
+    $('.events-error').html(thrownError);
   },
   fetchEvents: function() {
     let that = this;
@@ -118,7 +118,7 @@ let MyEvents = {
     // Example: 2021-07-05T19:40:47.382Z
     return this.getParamOrDefault('simulate_current_date', new Date().toISOString());
   }
-}
+};
 
 $(document).ready(function(){
   MyEvents.init();
