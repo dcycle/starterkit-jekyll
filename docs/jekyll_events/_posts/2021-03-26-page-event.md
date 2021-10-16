@@ -1,5 +1,6 @@
 ---
-title: New Year's Eve Party
+title: New Year's Eve Party (online)
+online: true
 dates:
   - start: 1999-12-31T18:30:23.579Z
     end: 2000-01-01T06:30:25.145Z
