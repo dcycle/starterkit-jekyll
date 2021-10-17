@@ -4,7 +4,7 @@ online: false
 allday: true
 timezone: Canada/Eastern
 dates:
-  - start: 2023-01-28T20:41:00.000Z
+  - start: 2223-01-28T20:41:00.000Z
     end: ""
 layout: event
 permalink: /events/all-day-event/

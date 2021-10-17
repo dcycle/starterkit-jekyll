@@ -4,7 +4,7 @@ online: false
 allday: false
 timezone: Canada/Pacific
 dates:
-  - start: 2021-10-05T14:00:00.000Z
+  - start: 2221-10-05T14:00:00.000Z
     end: ""
 layout: event
 permalink: /events/event-taking-place-in-vancouver/
