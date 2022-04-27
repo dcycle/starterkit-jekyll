@@ -15,6 +15,6 @@ source ./config/versioned
 T=30
 echo ""
 echo "Threshold $T"
-docker run --rm --network "$DOCKERNETWORK" dcycle/pa11y:1 http://"$DOCKERNAME"/index.html -T "$T"
+docker run --rm --network "$DOCKERNETWORK" dcycle/pa11y:2 http://"$DOCKERNAME"/index.html -T "$T"
 
 echo 'If this script passes, that means the number of errors is below the allowed threshold.'
