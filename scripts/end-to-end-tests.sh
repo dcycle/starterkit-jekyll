@@ -13,4 +13,4 @@ docker run -e DOMAIN="$DOCKERNAME" \
   --network "$DOCKERNETWORK" \
   -v "$(pwd)"/do-not-commit/screenshots:/artifacts/screenshots \
   -v "$(pwd)"/do-not-commit/dom-captures:/artifacts/dom-captures \
-  dcycle/browsertesting:3
+  dcycle/browsertesting:4
