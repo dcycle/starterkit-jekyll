@@ -31,7 +31,7 @@ it('It should be possible to interact with the site', async function() {
     await page.setViewport({ width: 1280, height: 800 });
     console.log('go to the home page');
     await page.goto('http://' + process.env.DOMAIN + '/index.html', {
-      waitUntil: load,
+      waitUntil: 'load',
       // On macOS this works fine, but I need to add the timeout for
       // circieCI and DigitalOcean intel VMs. Do not ask me why.
       // https://ourcodeworld.com/articles/read/1106/how-to-solve-puppeteer-timeouterror-navigation-timeout-of-30000-ms-exceeded
