@@ -31,10 +31,15 @@ it('It should be possible to interact with the site', async function() {
     await page.setViewport({ width: 1280, height: 800 })
     console.log('go to the home page')
     await page.goto('http://' + process.env.DOMAIN + '/index.html')
+    console.log('wait for .clickme')
     await page.waitForSelector('.clickme')
+    console.log('click .clickme')
     await page.click('.clickme')
+    console.log('wait for .show-on-click')
     await page.waitForSelector('.show-on-click')
+    console.log('take screenshot of after-click')
     await screenshot(page, 'after-click', await page.content());
+    console.log('done this test.')
   }
   catch (error) {
     console.log('Exception alert')
@@ -58,10 +63,15 @@ it('The config file should be good', async function() {
     await page.setViewport({ width: 1280, height: 800 })
     console.log('go to the home page')
     const response = await page.goto('http://' + process.env.DOMAIN + '/admin/')
+    console.log('wait for h1,button')
     await page.waitForSelector('h1,button')
+    console.log('wait for content')
     content = await page.content();
+    console.log('take screenshot debug-netlify')
     await screenshot(page, 'debug-netlify', content);
+    console.log('expect no "Config Errors"')
     expect(content).to.not.have.string('Config Errors');
+    console.log('done this test.')
   }
   catch (error) {
     console.log('Exception alert')
