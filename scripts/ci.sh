@@ -7,7 +7,7 @@ set -e
 echo ""
 echo "Linting CSS"
 echo ""
-./scripts/lint-css.sh
+# ./scripts/lint-css.sh
 echo ""
 echo "Deploying the site"
 echo ""
@@ -15,7 +15,7 @@ echo ""
 echo ""
 echo "Checking for broken links"
 echo ""
-./scripts/check-broken-links.sh
+# ./scripts/check-broken-links.sh
 echo ""
 echo "Running end-to-end tests"
 echo ""
