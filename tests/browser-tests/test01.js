@@ -18,7 +18,7 @@ var screenshot = async function(page, name, content) {
 }
 
 it('It should be possible to interact with the site', async function() {
-  this.timeout(50000);
+  this.timeout(120000);
   const puppeteer = require('puppeteer')
   const browser = await puppeteer.launch({
      headless: true,
@@ -32,10 +32,10 @@ it('It should be possible to interact with the site', async function() {
     console.log('go to the home page');
     await page.goto('http://' + process.env.DOMAIN + '/index.html', {
       waitUntil: 'load',
-      // On macOS this works fine, but I need to add the timeout for
+      // On macOS this works fine, but I need to add long timeout for
       // circieCI and DigitalOcean intel VMs. Do not ask me why.
       // https://ourcodeworld.com/articles/read/1106/how-to-solve-puppeteer-timeouterror-navigation-timeout-of-30000-ms-exceeded
-      timeout: 0,
+      timeout: 120000,
     });
     console.log('wait for .clickme');
     await page.waitForSelector('.clickme');
