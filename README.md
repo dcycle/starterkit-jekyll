@@ -39,6 +39,77 @@ Install Docker then run:
 
     ./scripts/ci.sh
 
+Let's Encrypt on a server
+-----
+
+(This does not apply to local development, only to publicly-accessible servers.)
+
+We will follow the instructions in the following blog post:
+
+* [Letsencrypt HTTPS for Drupal on Docker, October 03, 2017, Dcycle Blog](https://blog.dcycle.com/blog/170a6078/letsencrypt-drupal-docker/)
+
+Here are the exact steps:
+
+* Figure out the IP address of your server, for example 1.2.3.4.
+* Make sure your domain name, for example example.com, resolves to 1.2.3.4. You can test this by running:
+
+    ping example.com
+
+You should see something like:
+
+    PING example.com (1.2.3.4): 56 data bytes
+    64 bytes from 1.2.3.4: icmp_seq=0 ttl=46 time=28.269 ms
+    64 bytes from 1.2.3.4: icmp_seq=1 ttl=46 time=25.238 ms
+
+Press control-C to get out of the loop.
+
+* Run your instance (./scripts/deploy.sh)
+
+Now set up Let's Encrypt as per the above blog posts:
+
+    DOMAIN=example.com
+    ./scripts/destroy.sh
+    ./scripts/build-static-site.sh
+
+    source ./config/versioned
+
+    docker network ls | grep "$DOCKERNETWORK" || docker network create "$DOCKERNETWORK"
+    docker run --rm -d \
+      -e "VIRTUAL_HOST=$DOMAIN" \
+      -e "LETSENCRYPT_HOST=$DOMAIN" \
+      -e "LETSENCRYPT_EMAIL=my-email@$DOMAIN" \
+      --expose 80 \
+      --name "$DOCKERNAME" \
+      --network "$DOCKERNETWORK" \
+      -p "$DOCKERPORT":80 -v "$PWD/docs/_site":/usr/share/nginx/html:ro nginx:alpine
+
+If this is the first site you have on the server which uses this technique, you need to set up LetsEncrypt. If you already have LetsEncrypt running on this server, skip this step:
+
+    mkdir "$HOME"/certs
+    docker run -d -p 80:80 -p 443:443 \
+      --name nginx-proxy \
+      -v "$HOME"/certs:/etc/nginx/certs:ro \
+      -v /etc/nginx/vhost.d \
+      -v /usr/share/nginx/html \
+      -v /var/run/docker.sock:/tmp/docker.sock:ro \
+      --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy \
+      --restart=always \
+      jwilder/nginx-proxy
+    docker run -d \
+      --name nginx-letsencrypt \
+      -v "$HOME"/certs:/etc/nginx/certs:rw \
+      -v /var/run/docker.sock:/var/run/docker.sock:ro \
+      --volumes-from nginx-proxy \
+      --restart=always \
+      jrcs/letsencrypt-nginx-proxy-companion
+
+Connect your network and restart the Let's Encrypt container:
+
+    docker network connect "$DOCKERNETWORK" nginx-proxy
+    docker restart nginx-letsencrypt
+
+After 120 seconds the security certificate should work, and site should work with LetsEncrypt.
+
 Jekyll
 -----
 
