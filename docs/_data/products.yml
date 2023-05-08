@@ -1,0 +1,10 @@
+products:
+  - title: Subscription
+    price: 20
+    currency: "USD"
+    recurring:
+      every: 1
+      unit: month
+  - title: Sample One-time purchase
+    price: 20
+    currency: "USD"
