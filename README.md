@@ -15,7 +15,7 @@ If you would like to use Jekyll, please see the "Jekyll" section below.
 Landing pages
 -----
 
-This system can show landing pages using different templates (we use [Bootstrap Agency](https://startbootstrap.com/previews/agency) and [Bootstrap Freelancer](https://startbootstrap.com/previews/freelancer) as examples). To see how this works, see `./docs/jekyll_landing/_posts/2023-06-09-homepage.md`.
+This system can show landing pages using different templates (we use [Bootstrap Agency](https://startbootstrap.com/previews/agency) and [Bootstrap Freelancer](https://startbootstrap.com/previews/freelancer) as examples). To see how this works, see `./docs/jekyll_landing/_posts`, <http://0.0.0.0:8082/landing-agency/>, and <http://0.0.0.0:8082/landing-freelancer/>.
 
 Continuous integration
 -----
