@@ -30,7 +30,7 @@ it('It should be possible to interact with the site', async function() {
     console.log('set viewport');
     await page.setViewport({ width: 1280, height: 800 });
     console.log('go to the home page');
-    await page.goto('http://' + process.env.DOMAIN + '/index.html', {
+    await page.goto('http://' + process.env.DOMAIN + '/html-only.html', {
       waitUntil: 'load',
       // On macOS this works fine, but I need to add long timeout for
       // circieCI and DigitalOcean intel VMs. Do not ask me why.
