@@ -16,6 +16,7 @@ backend:
 media_folder: 'docs/media'
 public_folder: "/media"
 collections:
+{% include netlifycms_landing.html %}
 {% include netlifycms_config.html %}
 {% include netlifycms_pages.html %}
 {% include netlifycms_events.html %}

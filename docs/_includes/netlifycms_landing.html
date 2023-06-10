@@ -1,0 +1,21 @@
+  - name: 'landing'
+    create: true
+    label: 'Landing Pages'
+    folder: 'docs/jekyll_landing/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - label: 'Page style'
+        name: 'layout'
+        widget: select
+        options:
+          - { label: "List of events", value: "landing_freelancer" }
+          - { label: "List of blog posts", value: "landing_agency" }
+      - label: 'Path (for example /privacy-policy/)'
+        name: 'permalink'
+        widget: 'string'
+        {% include netlifycms_validate_path.html %}
+      - label: "Redirect From (for example /some-other-path/ ,/yet-another-path/)"
+        name: "redirect_from"
+        widget: "list"
+        {% include netlifycms_validate_path.html %}
