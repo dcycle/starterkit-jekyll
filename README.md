@@ -1,11 +1,19 @@
-Jekyll or HTML starterkit
+Jekyll starterkit
 =====
 
 [![CircleCI](https://circleci.com/gh/dcycle/starterkit-jekyll/tree/master.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-jekyll/tree/master)
 
-Starterkit for new HTML or Jekyll websites.
+Starterkit for a new Jekyll website.
 
-HTML or Jekyll, what's the difference?
+Optimized for GitHub Pages
+-----
+
+GitHub pages allows you to serve Jekyll websites with no extra steps. The set-up is as follows:
+
+* This code resides on https://github.com/dcycle/starterkit-jekyll
+* In the Pages section of Settings, we told GitHub to deploy the site from the ./docs subdirectory of the master branch. (Although it is possible to deploy from the root of the master or another branch, we recommend using the master branch and the ./docs subdirectory; this allows us to put items not destined for web publishing outside of the ./docs subdirectory.)
+
+HTML _is_ Jekyll (but Jekyll is not HTML)
 -----
 
 It is not necessary to use or understand Jekyll to to use this project. Its basic use case is that of a simple HTML website, so you can develop HTML just as you normally would.
